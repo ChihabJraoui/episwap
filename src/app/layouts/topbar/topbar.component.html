@@ -1,0 +1,139 @@
+<!-- Topbar Start -->
+<div class="navbar-custom">
+    <ul class="list-unstyled topnav-menu float-right mb-0">
+
+        <li class="d-none d-sm-block">
+            <!-- Search Form -->
+            <form class="app-search"
+                  #topbarSearchForm="ngForm"
+                  (ngSubmit)="search()">
+
+                <div class="app-search-box">
+                    <div class="input-group">
+
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Search..."
+                               id="searchQuery"
+                               name="searchQuery"
+                               [(ngModel)]="searchQuery"
+                               #searchQueryControl="ngModel" />
+
+                        <div class="input-group-append">
+                            <button class="btn" type="submit">
+                                <i class="fe-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </li>
+
+        <!-- Notifications -->
+        <li>
+            <app-notifications-list></app-notifications-list>
+        </li>
+
+        <!-- Profile Dropdown -->
+        <li class="dropdown notification-list" ngbDropdown placement="bottom-right">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" ngbDropdownToggle
+                id="profileDropdown" href="javascript: void(0);" role="button" aria-haspopup="false"
+                aria-expanded="false">
+
+                <img src="{{profilePicture}}" alt="" class="rounded-circle" />
+
+                <span class="pro-user-name ml-1">
+                    {{ (user$ | async).firstName }} <i class="mdi mdi-chevron-down"></i>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-left profile-dropdown"
+                 aria-labelledby="profileDropdown"
+                 ngbDropdownMenu>
+
+                <div class="dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome !</h6>
+                </div>
+                <a routerLink="/profile" class="dropdown-item notify-item">
+                    <i class="fe-user"></i><span>Profile</span>
+                </a>
+                <a routerLink="/account/settings" class="dropdown-item notify-item">
+                    <i class="fe-settings"></i>
+                    <span>Settings</span>
+                </a>
+                <!-- Upgrade account -->
+                <a routerLink="/subscriptions/plans-and-pricing" class="dropdown-item notify-item text-warning">
+                    <i class="mdi mdi-apple-keyboard-caps"></i><span>Upgrade your account</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-lock"></i>
+                    <span>Lock Screen</span>
+                </a>
+                <a href="javascript:void(0);" class="dropdown-item">
+                    <i class="fe-headphones mr-1"></i>
+                    <span>Help & Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="logout()">
+                    <i class="fe-log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </li>
+
+
+        <li class="dropdown notification-list">
+            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light"
+                (click)="toggleRightSidebar()">
+                <i class="fe-settings noti-icon"></i>
+            </a>
+        </li>
+    </ul>
+
+    <!-- LOGO -->
+    <div class="logo-box">
+        <a routerLink="/dashboard" class="logo text-center position-relative">
+            <span class="logo-lg">
+                <img src="assets/images/logo/logo_md_light_256.png" alt="Device Meter" height="40">
+                <!-- <span class="logo-lg-text-light">Xeria</span> -->
+            </span>
+            <span class="logo-sm">
+                <!-- <span class="logo-sm-text-dark">X</span> -->
+                <img src="assets/images/logo/logo_sm_light_64.png" alt="Device Meter" height="40">
+            </span>
+            <span class="badge badge-warning" style="position: absolute; top: 10px; right: 0;">Beta</span>
+        </a>
+    </div>
+
+    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+        <li>
+            <button class="button-menu-mobile waves-effect waves-light" (click)="toggleMobileMenu($event)">
+                <i class="fe-menu"></i>
+            </button>
+        </li>
+
+        <!-- Create new -->
+        <!--<li class="dropdown d-none d-lg-block" ngbDropdown>
+            <a class="nav-link dropdown-toggle waves-effect waves-light" href="javascript: void(0);" ngbDropdownToggle
+                id="extraMenu" role="button" aria-haspopup="false" aria-expanded="false">
+                Create New
+                <i class="mdi mdi-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="extraMenu">
+                &lt;!&ndash; item&ndash;&gt;
+                <a href="javascript:void(0);" class="dropdown-item" routerLink="/devices/add">
+                    <i class="fe-briefcase mr-1"></i>
+                    <span>New Device</span>
+                </a>
+                &lt;!&ndash; item&ndash;&gt;
+                <a href="javascript:void(0);" class="dropdown-item">
+                    <i class="fe-user mr-1"></i>
+                    <span>Create Users</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                &lt;!&ndash; item&ndash;&gt;
+            </div>
+        </li>-->
+    </ul>
+</div>
+<!-- end Topbar -->

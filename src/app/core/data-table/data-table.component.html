@@ -1,0 +1,53 @@
+<!-- DataTable -->
+<div fxLayout="row" fxLayoutAlign="center">
+	<table class="mat-elevation-z2"
+		   mat-table
+		   matSort
+		   [dataSource]="dataSource">
+
+		<!-- Dynamic Column -->
+		<div *ngFor="let column of displayedColumns; let i = index">
+			<ng-container *ngIf="column !='actions'" [matColumnDef]="column">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> {{columnsLabel[i]}} </th>
+				<td mat-cell *matCellDef="let element">{{element[column]}}</td>
+			</ng-container>
+		</div>
+
+		<!-- Column of Acions -->
+		<ng-container [matColumnDef]="'actions'">
+			<th mat-header-cell *matHeaderCellDef>Actions</th>
+			<td mat-cell *matCellDef="let element">
+				<button mat-icon-button class="customBtnIcon" matTooltip="Voir les informations du commercial" (click)="readRow(element)">
+					<mat-icon class="iconBtnTable">visibility</mat-icon>
+				</button>
+				<button mat-icon-button class="customBtnIcon" matTooltip="Modifier les informations du commercial" (click)="updateRow(element)">
+					<mat-icon class="iconBtnTable">make</mat-icon>
+				</button>
+				<button mat-icon-button class="customBtnIcon" matTooltip="Activer / Désactiver l'accès à l'application" (click)="mobileAccess(element)">
+					<mat-icon *ngIf="element?.appIsBlocked" color="warn">lock</mat-icon>
+					<mat-icon *ngIf="!element?.appIsBlocked" class="iconBtnTable">lock_open</mat-icon>
+				</button>
+				<button mat-icon-button class="customBtnIcon" matTooltip="Modifier le mot de passe du commercial" (click)="changeSalesPassword(element)">
+					<mat-icon class="iconBtnTable">screen_lock_portrait</mat-icon>
+				</button>
+				<button mat-icon-button matTooltip="Supprimer le commercial" (click)="deleteRow(element)">
+					<mat-icon class="trashIconBtnTable">delete_forever</mat-icon>
+				</button>
+			</td>
+		</ng-container>
+
+		<!--HEADER-ROW-->
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+		<!--ROW-->
+		<tr mat-row *matRowDef="let row, columns: displayedColumns;" class="pointer"></tr>
+	</table>
+</div>
+
+<!-- Paginator -->
+<div fxLayout="row" fxLayoutAlign="center">
+	<mat-paginator class="mat-elevation-z3"
+				   [pageSize]="10"
+				   [pageSizeOptions]="[5, 10, 20, 50]"
+				   showFirstLastButtons itemsPerPageLabel></mat-paginator>
+</div>

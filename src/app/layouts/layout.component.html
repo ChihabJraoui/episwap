@@ -1,0 +1,51 @@
+<!--<div [class.alternative]="ohterTheme">-->
+
+	<mat-sidenav-container autosize class="sidenav-container">
+
+		<mat-sidenav #drawer
+					 class="mat-elevation-z15"
+					 fixedInViewport="true"
+					 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+					 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+					 [opened]="!(isHandset$ | async)"
+					 [ngClass]="{'compact': (view$ | async) == 'map'}">
+
+			<app-sidebar [compact]="(view$ | async) == 'map'"></app-sidebar>
+		</mat-sidenav>
+
+		<mat-sidenav-content>
+
+			<mat-toolbar class="app-toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+
+				<div fxLayout="row" fxLayoutAlign="start center" fxFlex='45%'>
+					<button matTooltip="Ouvrir/Fermer le menu" mat-icon-button class="" (click)="drawer.toggle()">
+						<mat-icon>menu</mat-icon>
+					</button>
+				</div>
+				<div fxLayout="row" fxLayoutAlign="end start" fxFlex='45%'>
+					<!-- <button color="primary" mat-button matTooltip="Afficher les messages">
+						<mat-icon>notifications_none</mat-icon>
+					</button> -->
+					<button color="primary" matTooltip="Afficher les actions" mat-button [matMenuTriggerFor]="menu">
+						<span>{{payloadUser?.firstname | titlecase}} {{payloadUser?.lastname}}</span>
+					</button>
+					<mat-menu #menu="matMenu">
+						<button mat-menu-item>
+							<mat-icon>account_box</mat-icon>
+							<span>Voir mon profil</span>
+						</button>
+						<button mat-menu-item (click)="logout()">
+							<mat-icon>power_settings_new</mat-icon>
+							<span>Se déconnecter</span>
+						</button>
+					</mat-menu>
+				</div>
+			</mat-toolbar>
+
+			<div class="app-wrapper">
+				<router-outlet></router-outlet>
+			</div>
+
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+<!--</div>-->

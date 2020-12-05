@@ -1,0 +1,38 @@
+<div class="sidebar" [ngClass]="{'compact': compact === true}">
+
+	<!-- LOGO -->
+	<a class="logo" routerLink="/" fxLayoutAlign="center">
+		<img src="../../../../../assets/images/FE_quadri.png" />
+		<!-- <img src="../../../../../assets/images/rocketsales4.png" height="30px" width="30px"> -->
+	</a>
+
+	<!-- MENU -->
+	<mat-nav-list fxLayout="column" class="sidebar-menu h-75">
+
+		<ng-container *ngFor="let item of navigationMenuItems">
+			<a fxLayoutAlign="center center" class="btnDrawer" mat-list-item
+			   [routerLink]="[item.route]" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">
+				<i class="{{ item.icon }}"></i>
+				<span>{{ item.label }}</span>
+			</a>
+		</ng-container>
+
+		<!-- <a fxLayoutAlign="center center" class="btnDrawer" mat-list-item [routerLink]="['/client/championship']" [routerLinkActive]="['is-active5']" matTooltip="Classement championnat"
+			matTooltipPosition="below" class="effectMenu" style="color: whitesmoke;">
+			<mat-icon color="">emoji_events</mat-icon>
+			<span style="margin-left: 20px; margin-right: 100px;">Carte</span>
+		</a>
+		<a fxLayoutAlign="center center" mat-list-item [routerLink]="['/client/addons']" [routerLinkActive]="['is-active5']" matTooltip="Activer les recherches intilligentes"
+			matTooltipPosition="below" class="effectMenu" style="color: whitesmoke;">
+			<mat-icon color="">apps</mat-icon>
+			<span style="margin-left: 20px; margin-right: 100px;">Carte</span>
+		</a> -->
+	</mat-nav-list>
+
+	<mat-nav-list class="copyright" fxLayout="column" fxLayoutAlign="end" style="height: 30%;">
+		<a fxLayoutAlign="start center" mat-list-item>
+			<img src="../../../../../assets/images/rocketsales4.png" height="20px" width="20px">
+			<span style="color: #bdbdbd; font-size: 12px; margin-left: 10px;">Powered By RocketSales</span>
+		</a>
+	</mat-nav-list>
+</div>

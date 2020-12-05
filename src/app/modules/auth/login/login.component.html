@@ -1,0 +1,65 @@
+<div class="container">
+    <div fxLayout="row" style='height: 100vh;'>
+
+        <div fxLayout="column" fxFlex fxLayoutAlign="center center">
+            <mat-card appMaterialElevationAuth [defaultElevation]="defaultElevation" [raisedElevation]="raisedElevation" style="width: 500px;">
+                <mat-card-content>
+					<div fxLayoutAlign="center">
+						<img src="../../../../assets/images/rocketsales3.png" style="width: 150px; margin-top: 10px;">
+					</div>
+
+					<form [formGroup]="signInForm"
+						  (ngSubmit)="onSubmit()">
+
+                        <div style="margin-top: 30px;" fxLayoutAlign="center center">
+
+							<mat-form-field class="blueLigthHover" fxFlex="80%" appearance="fill">
+                                <mat-label>Saisir email</mat-label>
+
+								<input type="email" matInput placeholder="Email ici ..." formControlName="email" />
+                                <mat-icon matSuffix>account_box</mat-icon>
+                                <mat-error *ngIf="email.invalid">Le champ 'e-mail' est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayoutAlign="center center" class="mt-2">
+                            <mat-form-field class="blueLigthHover" fxFlex="80%" appearance="fill">
+                                <mat-label>Saisir password</mat-label>
+                                <input matInput type="password" placeholder="Mot de passe ici ..." formControlName="password">
+                                <mat-icon matSuffix>lock</mat-icon>
+								<mat-error *ngIf="password.invalid">Le champ 'Mot de passe' est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+
+						<!-- Error Message -->
+                        <div *ngIf="error$ | async" fxLayoutAlign="center" class="mt-2">
+							<mat-error>Une erreur d'authentification est survenue</mat-error>
+                        </div>
+
+						<!-- Login button -->
+						<mat-card-actions fxLayoutAlign="center">
+                            <button type="submit" class="submitBtn mt-2"
+									color="primary" mat-raised-button
+									fxFlex="75%">
+								<i *ngIf="loading$ | async" class="fa fa-spin fa-spinner mr-2"></i> Se connecter</button>
+                        </mat-card-actions>
+
+						<mat-card-actions fxLayoutAlign="center">
+                            <button class="blueLigthHover" mat-button>
+                                Mot de passe oublié ?
+                            </button>
+                        </mat-card-actions>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- ############ DEBUG ############ -->
+    <!-- <div>
+        stepperForm : {{stepperForm?.valid}} <br>
+        <pre>
+            {{stepperForm.value| json}}
+        </pre>
+    </div> -->
+
+</div>

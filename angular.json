@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "garage-sales-angular"
+    }
+  },
+  "defaultProject": "garage-sales-angular",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title fxLayoutAlign="center center">
+<!--	<mat-icon color="warn">{{data?.icon}}</mat-icon>-->
+	<i class="fe-{{data?.icon}} mr-2"></i>
+	{{data?.title}}
+</h1>
+<div mat-dialog-content>
+	<p>{{data?.message}}</p>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+	<button mat-flat-button color="warn" (click)="onConfirm()" cdkFocusInitial>{{data?.btn1}}</button>
+	<button mat-flat-button (click)="onDismiss()">{{data?.btn2}}</button>
+</div>
